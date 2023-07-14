@@ -23,3 +23,19 @@ installed.packages()
 install.packages("tidyverse")
 library("tidyverse")
 require("tidyverse")
+
+# Pipe Operator and data analysis
+my_data %>% 
+  select(Job.Title, Experience.Level, Salary, Salary.Currency, Year) %>% 
+  filter(Salary < 300000) %>% 
+  arrange(Job.Title)
+
+
+
+## 2. How to import data from Excel ------------------------
+install.packages("readxl")
+library(readxl)
+my_data2 <- read_excel("/Users/ricardoandressilvatorres/Library/CloudStorage/Dropbox/Programacion/R/R-Programming-101/fifa_2023.xlsx",
+                       sheet = "Worksheet")
+?readxl
+args(read_excel)
