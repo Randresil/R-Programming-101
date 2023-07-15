@@ -35,7 +35,44 @@ my_data %>%
 ## 2. How to import data from Excel ------------------------
 install.packages("readxl")
 library(readxl)
-my_data2 <- read_excel("/Users/ricardoandressilvatorres/Library/CloudStorage/Dropbox/Programacion/R/R-Programming-101/fifa_2023.xlsx",
+my_data2 <- read_excel("/Users/ricardoandressilvatorres/Library/CloudStorage/Dropbox/
+                       Programacion/R/R-Programming-101/fifa_2023.xlsx",
                        sheet = "Worksheet")
 ?readxl
 args(read_excel)
+
+
+## 3. Manipulate data using Tidyverse - Select, Filter, Mutate ---------
+# We are  going to use built in datasets
+# Use the tidyverse package to select variables,
+# filter obs, create new variables and create a summary
+
+require(tidyverse)
+data()
+
+View(starwars)
+
+starwars %>% 
+    select(name, height, mass, sex, species) %>% 
+    filter(species == "Human") %>%
+    na.omit() %>% 
+    mutate(height = height/100) %>% 
+    mutate(BMI = mass/height^2) %>%
+    group_by(sex) %>% 
+    summarise(Average_BMI = mean(BMI))
+  
+starwars2 <- starwars %>% 
+  select(name, height, mass, sex, species) %>% 
+  filter(species == "Human") %>%
+  na.omit() %>% 
+  mutate(height = height/100) %>% 
+  mutate(BMI = mass/height^2) %>%
+  group_by(sex) %>% 
+  summarise(Average_BMI = mean(BMI))
+
+
+
+
+
+
+
