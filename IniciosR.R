@@ -72,7 +72,23 @@ starwars2 <- starwars %>%
 
 
 
+## 4. Data Types in R ----------------------
+# Understand the 5 types of data in R
+# Change the data type for a variable
+# Add "levels" to a factor variable
 
+# str() gives a compactly display structure of an R object
+str(my_data2)
 
+my_data2$card_type <- as.factor(my_data2$card_type)
+
+my_data2$rating <- as.integer(my_data2$rating)
+
+levels(my_data2$card_type)
+my_data2$card_type <- factor(my_data2$card_type, 
+                             levels = c("")) # c("") para ponerle una etiqueta
+
+my_data2$R90 <- my_data2$rating >= 90
+class(my_data2$R90) # as.logical()
 
 
