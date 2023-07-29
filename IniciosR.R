@@ -92,3 +92,8 @@ my_data2$R90 <- my_data2$rating >= 90
 class(my_data2$R90) # as.logical()
 
 
+
+## 5. Renaming variables and reorder columns  ----------------------
+
+
+
