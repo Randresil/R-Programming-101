@@ -104,7 +104,6 @@ sw <- starwars %>%
 
 
 ## 6. Recoding data. Tidyverse and dplyr to create new variable  ----------------------
-
 sw <- starwars %>% 
   select(name, height, mass, sex) %>% 
   rename(weight = mass) %>% 
@@ -121,5 +120,64 @@ sw <- starwars %>%
 
 ## 7. 10 data filtering tips. Tidyverse to filter and subset data ----------------------
 View(msleep)
+
+#1
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(sleep_total > 18)
+
+#2 
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(!sleep_total > 18) # Not operator !
+
+#3
+ms <- msleep %>% 
+  select(name, order, bodywt, sleep_total) %>% 
+  filter(order == 'Primates', bodywt > 20) # AND operator ,
+
+#4
+ms <- msleep %>% 
+  select(name, order, bodywt, sleep_total) %>% 
+  filter(order == 'Primates' | bodywt > 20)  # OR Operator |
+
+#5 
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(name == "Cow" |
+           name == "Dog" |
+           name == "Goat")
+
+#6
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(name %in% c("Cow", "Dog", "Goat")) # %in% operator
+         
+#7
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(between(sleep_total, 16, 18)) # between function
+
+#8
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(near(sleep_total, 17, tol = 0.5)) # near function 
+
+#9
+ms <- msleep %>% 
+  select(name, conservation, sleep_total) %>% 
+  filter(is.na(conservation)) # is.na function 
+
+#10
+ms <- msleep %>% 
+  select(name, sleep_total) %>% 
+  filter(!is.na(conservation)) # is.na function with a not
+
+
+
+## 8. Using functions and objects in R ----------------------
+View(msleep)
+
+
 
 
