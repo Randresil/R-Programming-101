@@ -94,6 +94,32 @@ class(my_data2$R90) # as.logical()
 
 
 ## 5. Renaming variables and reorder columns  ----------------------
+# rename( new_name = old_name )
+# everything()
 
+sw <- starwars %>% 
+  select(name, height, mass, sex) %>%  #everything()
+  rename(weight = mass)
+
+
+
+## 6. Recoding data. Tidyverse and dplyr to create new variable  ----------------------
+
+sw <- starwars %>% 
+  select(name, height, mass, sex) %>% 
+  rename(weight = mass) %>% 
+  na.omit() %>% 
+  mutate(height = height / 100) %>% 
+  filter(sex %in% c("male", "female")) %>%  # filter(sex == "male" | sex == "female") 
+  mutate(sex = recode(sex, 
+                      male = "m", 
+                      female = "f")) %>% 
+  mutate(size = height > 1 & weight > 75, 
+         size = if_else(size == TRUE, "big", "small"))
+  
+
+
+## 7. 10 data filtering tips. Tidyverse to filter and subset data ----------------------
+View(msleep)
 
 
