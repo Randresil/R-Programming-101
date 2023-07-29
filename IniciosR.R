@@ -4,6 +4,7 @@
 # R version 4.1.2 
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 1. How to import data and install packages --------------
 data() # Check the built-in datasets
 
@@ -32,6 +33,7 @@ my_data %>%
 
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 2. How to import data from Excel ------------------------
 install.packages("readxl")
 library(readxl)
@@ -72,6 +74,7 @@ starwars2 <- starwars %>%
 
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 4. Data Types in R ----------------------
 # Understand the 5 types of data in R
 # Change the data type for a variable
@@ -93,6 +96,7 @@ class(my_data2$R90) # as.logical()
 
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 5. Renaming variables and reorder columns  ----------------------
 # rename( new_name = old_name )
 # everything()
@@ -103,6 +107,7 @@ sw <- starwars %>%
 
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 6. Recoding data. Tidyverse and dplyr to create new variable  ----------------------
 sw <- starwars %>% 
   select(name, height, mass, sex) %>% 
@@ -118,6 +123,7 @@ sw <- starwars %>%
   
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 7. 10 data filtering tips. Tidyverse to filter and subset data ----------------------
 View(msleep)
 
@@ -174,10 +180,39 @@ ms <- msleep %>%
   filter(!is.na(conservation)) # is.na function with a not
 
 
-
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 ## 8. Using functions and objects in R ----------------------
-View(msleep)
+rm(list = ls())
+data()
+cars <- mtcars
 
+my_age <- 22 # Defined value
+your_age <- 14
+sum(my_age, your_age)
 
+plot(cars$cyl, cars$mpg)
+hist(cars$cyl)
 
+attach(cars) # Attach Set of R Objects to Search Path
+hist(cars$mpg)
 
+summary(cars)
+summary(cars$mpg)
+class(cars)
+class(cars$mpg)
+
+length(cars$mpg)
+unique(cars$mpg)
+
+head(cars)
+tail(cars)
+
+cars[3:6 ,1:2]
+subset <- cars[3:6 ,1:2]
+
+# IMPORTANT - HOW TO ASK HELP ?
+?median
+median(cars$mpg)
+
+new_data <- c(2, 4, 6, 3, NA, 9)
+median(new_data, na.rm = TRUE)
